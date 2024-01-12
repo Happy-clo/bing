@@ -13,29 +13,29 @@ function getAction(error: ChatError, reset: () => void) {
     reset()
     return (
       <div>
-        请求次数过快，已被限流，请稍候重试...
+        请求失败，请重试
       </div>
     )
   }
   if (error.code === ErrorCode.BING_IP_FORBIDDEN) {
     return (
-      <ExternalLink href="https://github.com/weaigc/bingo/issues">
-        你的服务器或代理已被封禁，请更换服务器或使用代理重试
-      </ExternalLink>
+      <div>
+        请求失败，请重试
+      </div>
     )
   }
   if (error.code === ErrorCode.BING_TRY_LATER) {
     return (
       <a href={`#dialog="reset"`}>
-        请求失败，请手动重试
+        请求失败，请重试
       </a>
     )
   }
   if (error.code === ErrorCode.BING_FORBIDDEN) {
     return (
-      <ExternalLink href="https://bing.com/new">
-        你的账号已在黑名单，请尝试更换账号及申请解封
-      </ExternalLink>
+      <div>
+        请求失败，请重试
+      </div>
     )
   }
   if (error.code === ErrorCode.CONVERSATION_LIMIT) {
@@ -49,9 +49,9 @@ function getAction(error: ChatError, reset: () => void) {
   }
   if (error.code === ErrorCode.BING_CAPTCHA) {
     return (
-      <ExternalLink href="https://www.bing.com/turing/captcha/challenge">
-        点击通过人机验证
-      </ExternalLink>
+      <div>
+        请通过账号人机验证
+      </div>
     )
   }
   if (error.code === ErrorCode.BING_UNAUTHORIZED) {

@@ -94,22 +94,6 @@ export function UserMenu() {
             </a>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem asChild>
-            <a
-              href="https://huggingface.co/login?next=%2Fspaces%2Fhf4all%2Fbingo%3Fduplicate%3Dtrue%26visibility%3Dpublic"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-between w-full gap-2 cursor-pointer"
-            >
-              复制站点
-              <IconExternalLink className="w-3 h-3 ml-auto" />
-            </a>
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem className="flex-col items-start">
-            <div className="font-medium">版本信息 {pkg.version}</div>
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
           {installPrompt && <DropdownMenuItem className="flex-col items-start">
             <div className="font-medium" onClick={() => installPrompt.prompt?.()}>安装 Bing 到桌面</div>
           </DropdownMenuItem>}

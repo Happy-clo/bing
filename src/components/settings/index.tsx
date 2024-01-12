@@ -64,12 +64,12 @@ export function Settings() {
               >
                 打开并登录 Bing
               </ExternalLink>
-              ，然后再打开
+              然后再打开
               <ExternalLink href="https://www.bing.com/turing/captcha/challenge">Challenge 接口</ExternalLink>
-              右键 》检查。打开开发者工具，在网络里面找到 Challenge 接口 》右键复制》复制为 cURL(bash)，粘贴到此处，然后保存。
+              右键 检查 打开开发者工具，在网络里面找到 Challenge 接口 右键复制 复制为 cURL(bash)，粘贴到此处，然后保存
               <div className="h-2" />
               图文示例：
-              <ExternalLink href="https://github.com/weaigc/bingo#如何获取-bing_header">如何获取 BING_HEADER</ExternalLink>
+              <ExternalLink href="https://docs.wdsj.one/img/curl.png">如何获取 BING_HEADER</ExternalLink>
             </DialogDescription>
           </DialogHeader>
           <div className="flex gap-4">
@@ -77,7 +77,7 @@ export function Settings() {
           </div>
           <Input
             value={curlValue}
-            placeholder="在此填写用户信息，格式: curl 'https://www.bing.com/turing/captcha/challenge' ..."
+            placeholder="在此填写用户信息"
             onChange={e => {
               setCurlValue(e.target.value)
             }}
@@ -92,7 +92,7 @@ export function Settings() {
                 className={`${imageOnly ? 'translate-x-6' : 'translate-x-1'} inline-block h-4 w-4 transform rounded-full bg-white transition`}
               />
             </Switch>
-            身份信息仅用于画图（推荐开启）
+            启用画图功能
           </div>
 
           <div className="flex gap-2">

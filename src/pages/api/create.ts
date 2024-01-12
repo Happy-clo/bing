@@ -48,11 +48,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         debug('headers', headers, cookie)
 
         // const bingCookie = btoa(`curl -H 'cookie: ${cookie}'`)
+        /*
         res.setHeader('set-cookie', [
           // ...[`BING_HEADER=${bingCookie.trim()}`, `BING_IP=${response.headers.get('x-forwarded-for') || headers['x-forwarded-for']}`].map(c => `${c}; Max-Age=${86400 * 30}; Path=/;`),
           ...[`BING_HEADER=`, `BING_IP=`].map(c => `${c}; Max-Age=0; Path=/;`)
         ])
-
+        */
+        
         res.writeHead(200, {
           'Content-Type': 'application/json',
         })

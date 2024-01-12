@@ -30,6 +30,9 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="zh-CN" suppressHydrationWarning>
+      <head>
+        <meta name="robots" content="noindex,nofollow" />
+      </head>
       <body>
         <Toaster />
         <Providers attribute="class" defaultTheme="system" enableSystem>
