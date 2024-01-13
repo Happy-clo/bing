@@ -1,39 +1,41 @@
-# 使用 Node.js 20 版本作为基础镜像
-FROM node:20
+# 使用 LTS 版本的 Node.js 作为基础镜像
+FROM node:14
 
-# 设置非交互式前端，防止在安装过程中出现交互式提示
+# 设置非交互式 Debian 前端
 ARG DEBIAN_FRONTEND=noninteractive
 
-# 设置环境变量，如果没有特别需要则不配置 BING_HEADER
+# 如果没有特别需要不要配置
 ENV BING_HEADER ""
-ENV HOME=/home/user
-ENV PATH=/home/user/.local/bin:$PATH
 
-# 创建新用户 "user"，用户 ID 为 1000，并设置工作目录
-RUN useradd -o -u 1000 user && mkdir -p $HOME/app && chown -R user $HOME
+# 设置环境变量
+ENV HOME=/home/user \
+    PATH=/home/user/.local/bin:$PATH \
+    PORT=7860
 
-# 切换到 "user" 用户
-USER user
-
-# 设置工作目录为用户的 home 目录下的 app 文件夹
+# 创建并设置工作目录
 WORKDIR $HOME/app
 
-# 将当前目录内容复制到容器中的 $HOME/app，并设置所有者为 user
+# 创建一个新用户
+RUN useradd -o -u 1000 user && \
+    mkdir -p $HOME/app && \
+    chown -R user $HOME
+
+# 切换到用户
+USER user
+
+# 复制当前目录内容到容器中，设置所有者为用户
 COPY --chown=user . $HOME/app/
 
-# 如果 ".next/routes-manifest.json" 文件不存在，则执行 npm install 和 npm run build
-RUN if [ ! -f ".next/routes-manifest.json" ]; then \
-  npm install && npm run build; \
-  fi
+# 如果 .next/routes-manifest.json 不存在，则执行 npm 安装和构建
+RUN [ ! -f ".next/routes-manifest.json" ] && npm install && npm run build || true
 
 # 删除 src 目录
 RUN rm -rf src
 
-# 设置环境变量 PORT 为 7860
-ENV PORT 7860
+# 清理 npm 缓存
+RUN npm cache clean --force
 
-# 暴露端口 7860
 EXPOSE 7860
 
-# 容器启动时执行 npm start
+# 启动命令
 CMD ["npm", "start"]
