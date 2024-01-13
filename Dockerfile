@@ -1,5 +1,5 @@
 # 使用 LTS 版本的 Node.js 作为基础镜像
-FROM node:14
+FROM node:20
 
 # 设置非交互式 Debian 前端
 ARG DEBIAN_FRONTEND=noninteractive
