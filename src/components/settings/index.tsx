@@ -23,7 +23,7 @@ export function Settings() {
   const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 })
   const [loc, setLoc] = useAtom(hashAtom)
   const [curlValue, setCurlValue] = useState(extraCurlFromCookie(parseCookies(document.cookie, ChunkKeys)))
-  const [imageOnly, setImageOnly] = useState(isImageOnly)
+  const [imageOnly, setImageOnly] = useState(false)
   const [enabledHistory, setHistory] = useAtom(historyAtom)
 
   useEffect(() => {
