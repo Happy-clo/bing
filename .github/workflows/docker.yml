@@ -18,6 +18,7 @@ jobs:
       - run: |
           npm install
           npm run build
+          ls
       - name: Get Timestamp
         id: timestamp
         run: echo "::set-output name=timestamp::$(date +%s)"
