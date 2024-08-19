@@ -18,6 +18,11 @@ jobs:
       - run: |
           npm install
           npm run build
+      - name: Deploy Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Website-${{ steps.timestamp.outputs.timestamp }}
+          path: build
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
