@@ -18,6 +18,9 @@ jobs:
       - run: |
           npm install
           npm run build
+      - name: Get Timestamp
+        id: timestamp
+        run: echo "::set-output name=timestamp::$(date +%s)"
       - name: Deploy Artifact
         uses: actions/upload-artifact@v3
         with:
