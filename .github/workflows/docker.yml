@@ -52,18 +52,3 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: happyclo/bing:latest
-      - name: Push to hub
-        if: "github.event_name != 'pull_request'"
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          HF_USERNAME: Happys
-          SPACE_NAME: bing
-        run: |
-          git clone https://$HF_USERNAME:$HF_TOKEN@huggingface.co/spaces/$HF_USERNAME/$SPACE_NAME huggingface
-          cd huggingface
-          git config user.name Happys
-          git config user.email admin@wdsj.one
-          echo "Last deploy time: $(date)" > DEPLOY_DATE.txt
-          git add DEPLOY_DATE.txt
-          git commit -am "auto deploy $(date)"
-          git push https://$HF_USERNAME:$HF_TOKEN@huggingface.co/spaces/$HF_USERNAME/$SPACE_NAME main -f
