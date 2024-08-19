@@ -2,6 +2,7 @@
 
 const nextConfig = {
   distDir: 'build',
+  output: 'export',
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve = {
