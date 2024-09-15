@@ -234,3 +234,13 @@ Y3VybCAnaHR0cHM6Ly93d3cuYmluZy5jb20vdHVyaW5nL2NvbnZlcnNhdGlvbi9jcmVhdGUnIFwgICAt
 ## License
 
 MIT © [LICENSE](https://github.com/weaigc/bingo/blob/main/LICENSE).
+
+# Statement
+
+> [!CAUTION]  
+> 本分支仅用于个人开发提供构建或帮助，请勿直接使用构建附件。如出现任何有关源插件问题，本作者概不负责。
+
+---
+
+> [!CAUTION]  
+> This branch is only used for personal development to provide builds or help. Please do not use the build attachments directly. The author is not responsible for any problems with the source plugin.
